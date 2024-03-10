@@ -1,15 +1,8 @@
 # import smtplib
 
-# email = "rajvardhansinghchib@gmail.com"
-# password = "qixyvyhtavstprdw"
-# connection = smtplib.SMTP("smtp.gmail.com", 587)
-# connection.starttls()
-# connection.login(user=email, password=password)
-# connection.sendmail(email, "fjrnvnjjncjnfjnvj@gmail.com", msg='Hello')
-# connection.close()
-
 # email_backends.py
 import smtplib
+from django.conf import settings
 
 class EmailError(Exception):
     def __init__(self, message):
@@ -20,8 +13,8 @@ class EmailError(Exception):
 class SMTPEmailServer():
     def __init__(self, host, port):
         self.connection = None
-        self.user = "rajvardhansinghchib@gmail.com"
-        self.password = "qixyvyhtavstprdw"
+        self.user = settings.EMAIL_HOST_USER
+        self.password = settings.PASSWORD
         self.host = host
         self.port = port
     
@@ -42,8 +35,8 @@ class SMTPEmailServer():
 # mail.send_mail('rajvardhansinghchib@gmail.com', ['rajvardhansinghchib@gmail.com'], "Mesaage from django server")
 def send_mail(subject, sender, receipents, message):
         connection = None
-        user = "rajvardhansinghchib@gmail.com"
-        password = "qixyvyhtavstprdw"
+        user = settings.EMAIL_HOST_USER
+        password = settings.PASSWORD
         host = "smtp.gmail.com"
         port = 587
         message = 'Subject: {}\n\n{}'.format(subject, message)
