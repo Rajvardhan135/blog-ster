@@ -30,9 +30,7 @@ class SMTPEmailServer():
         except(smtplib.SMTPRecipientsRefused):
             raise EmailError("Invalid email provided")
 
-# mail = CustomEmailBackend("smtp.gmail.com", 587)
 
-# mail.send_mail('rajvardhansinghchib@gmail.com', ['rajvardhansinghchib@gmail.com'], "Mesaage from django server")
 def send_mail(subject, sender, receipents, message):
         connection = None
         user = settings.EMAIL_HOST_USER
@@ -49,19 +47,3 @@ def send_mail(subject, sender, receipents, message):
             connection.close()
         except(smtplib.SMTPRecipientsRefused):
             raise EmailError("Invalid email provided")
-        
-'''
-connection = None
-        user = "rajvardhansinghchib@gmail.com"
-        password = "qixyvyhtavstprdw"
-        host = "smtp.gmail.com"
-        port = 587
-        msg = MIMEMultipart()
-        msg['From'] = sender
-        msg['To'] = receipents[0]
-        msg['Subject'] = subject
-        connection = smtplib.SMTP(host, port)
-        connection.starttls()
-        connection.login(user=user, password=password)
-        connection.sendmail(sender, receipents[0], msg=message)
-'''

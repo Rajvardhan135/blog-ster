@@ -37,6 +37,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SITE_ID = 1
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [
@@ -129,13 +133,3 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-EMAIL_BACKEND = 'blog.email_backends.CustomEmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'rajvardhansinghchib@gmail.com'
-EMAIL_HOST_PASSWORD = 'qixyvyhtavstprdw'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-'''
-send_mail('Django Mail', 'This message was sent to you by Django.', 'rajvardhansinghchib@gmail.com', ['rajvardhansinghchib@gmail.com'], fail_silently=False)
-'''
